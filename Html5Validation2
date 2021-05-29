@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    
+
+<div class="row">
+
+
+    <div class="col-md-3"></div>
+
+
+    <div class="col-md-6" style="border: 1px solid black;padding: 20px;">
+    <form action="" >
+        <div class="form-group">
+            <label for="" class="control-label">Name</label>
+            <input type="text" class="form-control" placeholder="Name" minlength="3" maxlength="30" required>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="" class="control-label">Age</label>
+            <input type="number" class="form-control" min="18" max="60"  required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="" class="control-label">Email</label>
+            <input type="Email" class="form-control" placeholder="example@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label">Password</label>
+            <input type="password" id="pass" class="form-control" placeholder="must be of 8 character" pattern="[0-9a-zA-Z]{8,20}"  required>
+            <span id="showPass">&#128065;</span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Submit">
+        </div>
+    </form>
+
+    </div>
+
+
+    <div class="col-md-3"></div>
+
+
+
+</div>
+
+
+
+<script>
+
+        var x = 0;
+
+    document.getElementById("showPass").addEventListener("click",function(){
+
+        if(x > 0){
+            var passVar = document.getElementById("pass");
+            passVar.type = "password";
+        }else{
+            var passVar = document.getElementById("pass");
+            passVar.type = "text";
+            x++;
+        }
+
+        
+
+    });
+
+</script>
+
+</body>
+</html>
