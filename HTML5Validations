@@ -32,12 +32,12 @@
             <label for="" class="control-label">Name</label>
             <!-- <input type="text" class="form-control" id="name" pattern="[a-zA-Z]{1,15}" minlength="3" maxlength="20" required> -->
             <input type="text" class="form-control" id="name"  minlength="3" maxlength="20" required>
-  
+            <strong   id="nameError" ></strong>
         </div>
 
         <div class="form-group">
             <label for="" class="control-label">Age</label>
-            <input type="number" class="form-control" id="age"  required>
+            <input type="number" class="form-control" id="age" min="18" max="60"  required>
         </div>
 
 
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-danger btn-block" id="mybtn" value="Submit">
+            <input type="submit"  class="btn btn-danger btn-block" id="mybtn" value="Submit">
         </div>
 
 
@@ -71,24 +71,47 @@
     var myemail  = document.getElementById("email").value;
     var mypassword  = document.getElementById("password").value;
     var myage  = document.getElementById("age").value;
+
+    var nameErr = document.getElementById("nameError");
     // myname.oninvalid = function(event){
     //     event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
     // }
-    
+    var nameRegex = /^[a-zA-Z ]*[a-zA-Z ]$/;
+
+
+
+
+    myname.onkeydown = function(event){
+           var myNametext =  this.value;
+           if(nameRegex.test(myNametext)){          
+                nameErr.innerHTML = "Name Vaildated!";
+                nameErr.style.color = "green";
+                myname.style.outline = '3px solid green';
+            }else{
+                nameErr.innerHTML = "Name invalid! remove digits and speacial characters";
+                nameErr.style.color = "red";
+                myname.style.outline = '3px solid red';
+            }
+    }
+
         const myForm = document.getElementById("myForm"); 
         myForm.addEventListener('submit',function(e){
-
-            if(/[a-zA-z]{1,15}/.test(myname.value)){
-              alert("validation confirm");
+        
+            if(nameRegex.test(myname.value)){          
+                nameErr.innerHTML = "Name Vaildated!";
+                nameErr.style.color = "green";
             }else{
-                myname.oninvalid = function(event){
-                event.target.setCustomValidity('Username should only contain letters. e.g. John');
-                }
-               // alert("invalid");
-               myname.style.outline = '5px solid red';
+               nameErr.innerHTML = "Name invalid! remove digits and speacial characters";
+                nameErr.style.color = "red";
+                myname.style.outline = '3px solid red';
+                
+                event.preventDefault();
+                event.stopPropagation();
             }
+               
+          
 
-            e.preventDefault();
+           
 
         });
 
